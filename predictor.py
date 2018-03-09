@@ -10,7 +10,7 @@ def predict_signalP(filename, filename2):
     x,y = input_good.parser_train(filename)
     predicting_topo = input_good.parser_output(filename2)
     #print(predicting_topo)
-    print(len(predicting_topo))
+    #print(len(predicting_topo))
     clf2 = svm.SVC(kernel='linear', C=1)
     clf2.fit(x,y)
     result = clf2.predict(predicting_topo) 
@@ -34,16 +34,13 @@ def predict_signalP(filename, filename2):
     for lines in range(len(texti)):
         #print(lines)
         if texti[lines].startswith (">"):
-            #print(texti[lines])
+            print(texti[lines])
             print(texti[lines+1])
             outputSP = outputSP +len(texti[lines+1])
             j ="".join(decoded_topo_list[start:outputSP])
             print(j)
             start = outputSP
            
-       
-   
-    
      
 if __name__ == '__main__':
     predict_signalP('small_test_gram+.txt', 'predict_protein.txt')

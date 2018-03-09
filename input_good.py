@@ -25,7 +25,7 @@ dictioseq["Y"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]
 dictioseq["P"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 
 
-window_size = 39
+window_size = 3
 
 def parser_train(filename):
     file = open(filename,'r+')
@@ -66,10 +66,7 @@ def parser_train(filename):
     #print(binarytopo,mergedbinseq)
     return(mergedbinseq,binarytopo)
 
-
-
 #### This parser has the code to read the file that I will further predict. It's different from the parser_train because this file will only have line for ID and line for sequence ####
-
 
 def parser_output(filename):
     file = open(filename,'r+')
@@ -82,8 +79,7 @@ def parser_output(filename):
             key = line.strip(">")
             value = [text[count]]
             d[key] = value
-            count=count+2      
-            
+            count=count+2           
     ID = []
     seq = []
     
@@ -98,15 +94,13 @@ def parser_output(filename):
         seq = d.get(ID)[0]
         modiseq = ["X"] + list(seq) + [2*"X"]
         aa_sequence = ''.join(modiseq)
-               #print(aa_sequence)      
-        for i in range(len(aa_sequence)-window_size):
-               #print(aa_sequence[i:i+window_size])
+        #print(aa_sequence)      
+        for x in range(len(aa_sequence)-window_size):
+            #print(aa_sequence[x:x+window_size])
             binaryseq = []
-            for i in aa_sequence[i:i+window_size]:
-              binaryseq.extend(dictioseq[i])
+            for x in aa_sequence[x:x+window_size]:
+              binaryseq.extend(dictioseq[x])
             mergedbinseq.append(binaryseq) 
-                #print(binaryseq)
-                #print(len(binaryseq))
             #print(mergedbinseq)       
             #print(len(mergedbinseq))
     return(mergedbinseq)

@@ -1,3 +1,9 @@
 # Project-in-molecular-life-science
-I have the code for the input (get sequence from a file and convert to binary + convert the corresponding topology into integer), which is called input.py 
-Now I'm in the step I have to train and test with my own dataset (signal peptide gram + bacteria)
+In my project I need to predict signal peptide of gram positive bacteria, which are small sequences around 15-40 residues in the N-terminal site that direct the protein to the cell membrane. I had a big dataset of more than 3.000 sequences, both positive (containing signal peptide (S)) and negative examples (not containing S, but t or .). Given that running my whole dataset is very time-consuming (more than 24h day), I decided to create a smaller dataset of around 40 sequences, trying to maintain the representation of both negativa and positive sequences. This dataset is a FASTA file in text form called new_train_test_gram+.txt which I also attached. In addition, these is the content of my other files: 
+
+Scripts: 
+- input_good.py: parsers for both the training set and the protein sequence to predict
+- crossval_svm.py: crossvalidation and window size testing. 
+- train_SVM_model: training an SVM input and creating the model ('signalP+_model.sav')
+- predictor.py: code for predicting a protein sequence
+

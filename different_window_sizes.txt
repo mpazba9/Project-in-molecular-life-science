@@ -1,0 +1,36 @@
+This is the f1_macro scoring gives me. The more window size, the better score
+The file is new_train_test, with 37 sequences. 
+
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    2.8s finished
+0.466378506256 9
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    2.9s finished
+0.615965759679 11
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.4s finished
+0.662108019981 13
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.7s finished
+0.68443289297 15
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.8s finished
+0.686798085207 17
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    4.0s finished
+0.698288393711 19
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    4.1s finished
+0.726612116149 21
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.9s finished
+0.748984706769 23
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    4.0s finished
+0.745548617538 25
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.9s finished
+0.74024644259 27
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.7s finished
+0.745261097207 29
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.6s finished
+0.757485676176 31
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.5s finished
+0.760199722412 33
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.4s finished
+0.772283967516 35
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.3s finished
+0.785144455897 37
+[Parallel(n_jobs=1)]: Done   5 out of   5 | elapsed:    3.3s finished
+0.797031307266 39
+

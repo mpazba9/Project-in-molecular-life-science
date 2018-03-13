@@ -1,5 +1,5 @@
 # This should have the parser that contains the sequence in binary and topology in integer, for further use in SVM (both train_test and crossvalidate functions)
-
+import collections
 
 dictioseq = {}
 dictioseq["X"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -24,13 +24,16 @@ dictioseq["W"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]
 dictioseq["Y"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]
 dictioseq["P"] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 
+d = collections.OrderedDict()
 
-window_size = 3
+#window_size = 3
+#flank = window_size//2
 
-def parser_train(filename):
+def parser_train(filename, window_size):
     file = open(filename,'r+')
     text = file.read().splitlines()
     d = {}
+    d = collections.OrderedDict()
     count=1
     for line in text:
         line = line.rstrip('\n\r')
@@ -38,22 +41,28 @@ def parser_train(filename):
             key = line.strip(">")
             d[key] = [text [count], text [count+1]]
             count=count+3
+            #d = collections.OrderedDict()
     seq = []
     ID = []
     topology = [] 
 
     binaryseq = []
     mergedbinseq = []
-    binarytopo = []
+    binarytopo = []    
     
     
     for ID in d.keys():
+        
         seq = d.get(ID)[0]   
         topology = d.get(ID)[1]
-        modiseq = ["X"] + list(seq) + [2*"X"]
-        aa_sequence = ''.join(modiseq[:80])
-        moditop = ''.join(list(topology))  
-        for i in range(len(aa_sequence)-window_size):
+        flank = window_size//2
+        modiseq = ["X"]*flank + list(seq[:80]) + ["X"]*flank
+        aa_sequence = ''.join(modiseq)
+        moditop = ''.join(list(topology[:80])) 
+        
+        #print(ID,modiseq, len(modiseq))
+        for i in range(0,len(aa_sequence)-2*flank):
+            #print(modiseq[i:i+window_size])
             for t in moditop[i]:
                 if "S" == moditop[i]:
                     binarytopo.append(4)
@@ -62,16 +71,21 @@ def parser_train(filename):
             binaryseq = []
             for i in aa_sequence[i:i+window_size]:
               binaryseq.extend(dictioseq[i])
-            mergedbinseq.append(binaryseq) 
-    #print(binarytopo,mergedbinseq)
+            mergedbinseq.append(binaryseq)         
+        #print(ID, seq, len(seq))
+    #print(binarytopo, len(binarytopo))
+    #print(len(binarytopo),len(mergedbinseq))
     return(mergedbinseq,binarytopo)
+
 
 #### This parser has the code to read the file that I will further predict. It's different from the parser_train because this file will only have line for ID and line for sequence ####
 
+d = collections.OrderedDict()
 def parser_output(filename):
     file = open(filename,'r+')
     text = file.read().splitlines()
     d =  {}
+    d = collections.OrderedDict()
     count=1
     for line in text:
         line = line.rstrip('\n\r')
@@ -86,39 +100,30 @@ def parser_output(filename):
     binaryseq = []
     mergedbinseq = []
     
-    #ID = key
-    #seq = d[key]
-    #print(ID)
-            #print(d[key])
     for ID in d.keys():
         seq = d.get(ID)[0]
-        modiseq = ["X"] + list(seq) + [2*"X"]
-        aa_sequence = ''.join(modiseq)
-        #print(aa_sequence)      
-        for x in range(len(aa_sequence)-window_size):
-            #print(aa_sequence[x:x+window_size])
+        modiseq = ["X"]*flank + list(seq[:80]) + ["X"]*flank
+        aa_sequence = ''.join(modiseq)        
+        
+        #print(ID,modiseq, len(modiseq))
+        for x in range(0,len(aa_sequence)-2*flank):
             binaryseq = []
             for x in aa_sequence[x:x+window_size]:
               binaryseq.extend(dictioseq[x])
             mergedbinseq.append(binaryseq) 
-            #print(mergedbinseq)       
-            #print(len(mergedbinseq))
+            #print(mergedbinseq)
+        #print(ID, seq,len(seq)) 
+    #print(mergedbinseq)      
+    #print(ID, modiseq, len(modiseq),len(mergedbinseq))
     return(mergedbinseq)
 
 if __name__ == '__main__':
-    #parser_train('small_test_gram+.txt',3)
-    parser_train('new_train_test_gram+.txt')
+    #parser_train('small_test_gram+.txt')
+    parser_train('new_train_test_gram+.txt',3)
+    #parser_train('testg+.txt',3)
     #p('new_train_test_gram+.txt',32)
     #p('testg+.txt',3)
-    parser_output('testg+.txt')
-
-
-
-
-
-
-
-
+    parser_output('testg+2lines.txt')
 
 
 

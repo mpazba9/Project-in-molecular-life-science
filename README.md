@@ -5,5 +5,5 @@ Scripts:
 - input_good.py: parsers for both the training set and the protein sequence to predict
 - crossval_svm.py: crossvalidation and window size testing. 
 - train_SVM_model: training an SVM input and creating the model ('signalP+_model.sav')
-- predictor.py: code for predicting a protein sequence
+- optimized_predictor.py: predictor that includes the model ('signalP+_model.sav') and predicts two sequences ('predict_protein.txt')
 

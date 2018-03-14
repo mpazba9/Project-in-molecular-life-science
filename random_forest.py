@@ -36,7 +36,7 @@ def RandomForestC_balanced (filenamerfc):
                 scores = cross_val_score(clf_rfc, o, u, cv=5,verbose=True)
                 #--f1 score --# scores = cross_val_score(clf_rfc, o, u, cv=5,verbose=True, scoring='f1_macro')
                 average_scores = np.average(scores)
-                print(average_scores,window_size, n_estimators_new, min_samples_split_new)
+                #print(average_scores,window_size, n_estimators_new, min_samples_split_new)
 
 
 

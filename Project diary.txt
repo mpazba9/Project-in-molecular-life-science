@@ -1,0 +1,17 @@
+Diary
+
+- Week 1: 
+I selected a list of 5 papers relevant to my problem. Unfortunately they were not very recent. 
+
+- Week 2:
+I managed to code a parser to extract the file, create the window size.I had a problem with the window size accuracy because was the same independently of the window size. I made a few modifications like adding a balanced weight parameter in SVM.  
+When I wanted to predict one protein, it gave me wrong because I needed to create another parser that would read the format of this files (2 lines, not 3 lines), so at the end of the week I coded another parser for the prediction file. 
+
+- Week 3:
+I was still fighting with the prediction because I had an error in my original parse (as usual), and I created a new python file called optimized_prediction, where I could finally predict multiple sequences. The problem was basically that the keys and values were not in order, so I added OrderedDict() at my original parse. 
+I submitted the self-evaluation and the evaluations of my other colleagues
+Also I was very focused on my presentation and I prepared it all week. 
+
+- Week 4: 
+Here I was focused on optimizing the Random Forest and Decision tree as well as calculting the MCC. I also tried to build a confusion matrix because it was appropriate to my problem (signal peptide or non-signal peptide), but I couldn't manage to obtain it at the end. I thought about including the PSSM analysis, but given that I didn't had almost time for it, I decided to stop there because I already had the mandatory parts. 
+I was more very focused on finishing the report and including the last results that I obtained as well as trying to compare my performance with other predictions in the bibliography. 
